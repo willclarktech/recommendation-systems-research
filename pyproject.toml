@@ -8,6 +8,7 @@ authors = ["willclarktech <willclarktech@users.noreply.github.com>"]
 python = "^3.9"
 gym = "^0.18.0"
 numpy = "^1.20.2"
+syft = {git = "https://github.com/OpenMined/PySyft.git", rev = "0.5.0rc1"}
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"

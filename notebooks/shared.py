@@ -1,4 +1,4 @@
-from time import sleep
+import asyncio
 
 import gym
 from torch import Tensor
@@ -64,11 +64,9 @@ def run_epoch(
     return agent.q_table, rets
 
 
-def wait_for_remote_object(duet, tag: str, poll_interval_secs: float = 2.0):
+async def wait_for_remote_object(duet, tag: str, poll_interval_secs: float = 2.0):
     while True:
-        sleep(poll_interval_secs)
-        if len(duet.store) != 0:
-            try:
-                return duet.store[tag]
-            except:
-                pass
+        try:
+            return duet.store[tag]
+        except:
+            await asyncio.sleep(poll_interval_secs)
